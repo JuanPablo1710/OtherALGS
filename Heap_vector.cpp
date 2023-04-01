@@ -9,11 +9,11 @@ typedef struct THeap{
 
 	bool empty(){ return data.empty(); }
 
-	void print(){
-		for(int i = 0; i < data.size(); i++) cout << data[i] << " ";
-	}
+	void print(){ for(int i = 0; i < data.size(); i++) cout << data[i] << " "; }
 
 	int parent(int i){ return (i -1) / 2; }
+	
+	int top(){ return data[0]; }
 
 	void push(int x){
 
