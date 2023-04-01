@@ -5,17 +5,15 @@ typedef struct THeap{
 	int data[10000];
 	int index;
 
-	THeap(){
-		index = 0;
-	}
+	THeap(){ index = 0; }
 
 	int size(){ return index; }
 
 	bool empty(){ return index == 0; }
 
-	void print(){
-		for(int i = 0; i < index; i++) cout << data[i] << " ";
-	}
+	int top(){ return data[0]; }
+
+	void print(){for(int i = 0; i < index; i++) cout << data[i] << " "; }
 
 	int parent(int i){ return (i -1) / 2; }
 
@@ -34,7 +32,6 @@ typedef struct THeap{
 
 		index++;
 	}
-
 };
 
 int main() {
