@@ -17,6 +17,11 @@ typedef struct THeap{
 
 	int parent(int i){ return (i -1) / 2; }
 
+	int lson(int i){ return i*2 + 1; }
+	int rson(int i){ return i*2 + 2; }
+
+	int operator[](int i){ return data[i]; }
+
 	void push(int x){
 
 		int tempinx = index, pindex = parent(tempinx);
@@ -32,11 +37,34 @@ typedef struct THeap{
 
 		index++;
 	}
+
+	void pop(){
+		data[0] = data[index-1];
+		index--;
+
+		int tempinx = 0, hijo1 = lson(tempinx), hijo2 = rson(tempinx), maxp = -1;
+
+		while(true){
+
+			maxp = tempinx;
+
+			if(hijo1 < index && data[hijo1] > data[maxp]) maxp = hijo1;
+			if(hijo2 < index && data[hijo2] > data[maxp]) maxp = hijo2;
+
+			if(maxp != tempinx) swap(data[maxp], data[tempinx]);
+			else break;
+
+			tempinx = maxp;
+			hijo1 = lson(tempinx);
+			hijo2 = rson(tempinx);
+		}
+	}
+
 };
 
 int main() {
 	
-	int n; 
+	int n, k; 
 	cin >> n;
 
 	THeap tree;
