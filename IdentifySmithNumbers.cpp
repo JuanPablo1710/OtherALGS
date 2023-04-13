@@ -16,7 +16,8 @@ int cnt_dig(int n){
 bool es_primo(int n){
 	int sq = sqrt(n);
 
-	for(int i = 2; i <= sq; i++) if(n % i == 0){
+	if(n%2 == 0) return false;
+	for(int i = 3; i <= sq; i+=2) if(n % i == 0){
 		return false;
 	}
 
