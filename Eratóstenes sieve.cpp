@@ -1,14 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int const MAX_N = 10000001;
-int lim = sqrt(MAX_N);
-bitset<MAX_N> sieve;
+int MAX_N = 10000001;
+vector<bool> sieve(MAX_N, true);
 
 void fil_sieve(){
-	sieve[0] = sieve[1] = false;
+	sieve[1] = false;
 
-	for(int i = 2; i <= lim; i++){
+	for(int i = 2; i < MAX_N; i++){
 		if(sieve[i]){
 			for(int j = i+i; j < MAX_N; j+=i) sieve[j] = false;
 		}
